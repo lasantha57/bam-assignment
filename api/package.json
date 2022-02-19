@@ -9,6 +9,14 @@
   "author": "Lasantha Basnayake",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "helmet": "^5.0.2",
+    "node-fetch": "^2.6.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-plugin-security": "^1.4.0",
+    "nodemon": "^2.0.15"
   }
 }
