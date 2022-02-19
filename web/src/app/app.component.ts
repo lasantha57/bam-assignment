@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Bam Web';
+
+  categoryOptions = [{ id: 0, name: 'All Categories' }];
+  selectedCategoryOption = this.categoryOptions[0];
+
+  filterByCategory(option: any) {
+
+  }
 }

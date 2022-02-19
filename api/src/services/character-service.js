@@ -6,9 +6,17 @@ class CharacterService {
     constructor() {
     }
 
-    async getAll() {
+    async search(queryParams) {
+
+        let url = `${BASE_URI}/character?`;
+
+        for (let key in queryParams) {
+            const value = queryParams[key];
+            url = `${url}&${key}=${value}`;
+        }
+
         try {
-            const apiResponse = await fetch(`${BASE_URI}/character`, { headers: { 'Authorization': 'Bearer ZhYtzsxQGxgdabJAodjX' }})
+            const apiResponse = await fetch(url, { headers: { 'Authorization': 'Bearer ZhYtzsxQGxgdabJAodjX' } })
             const apiResponseJson = await apiResponse.json()
             return apiResponseJson.docs;
         } catch (error) {
@@ -18,7 +26,7 @@ class CharacterService {
 
     async getById(id) {
         try {
-            const apiResponse = await fetch(`${BASE_URI}/character/${id}`, { headers: { 'Authorization': 'Bearer ZhYtzsxQGxgdabJAodjX' }})
+            const apiResponse = await fetch(`${BASE_URI}/character/${id}`, { headers: { 'Authorization': 'Bearer ZhYtzsxQGxgdabJAodjX' } })
             const apiResponseJson = await apiResponse.json()
             return apiResponseJson.docs;
         } catch (error) {

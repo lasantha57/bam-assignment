@@ -6,9 +6,11 @@ class CharacterController {
     constructor() {
     }
 
-    async getAll(req, res, next) {
+    async search(req, res, next) {
+        const queryParams = req.query;
+
         try {
-            const results = await CharacterService.getAll();
+            const results = await CharacterService.search(queryParams);
             res.json(results);
         } catch (error) {
             console.log(error)
