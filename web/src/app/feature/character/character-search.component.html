@@ -1,0 +1,95 @@
+<div class="content" role="main">
+
+  <h1>Lord of the Rings</h1>
+
+  <div class="row mt-4">
+
+    <div class="col">
+      <label class="small">Name</label>
+      <div ngbDropdown #dropdown="ngbDropdown" container="body">
+        <button class="btn btn-sm btn-light px-3" ngbDropdownToggle>{{
+          selectedName }}</button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem class="btn-sm btn-light" (click)="filterByName()">Please Select</button>
+          <button ngbDropdownItem *ngFor="let option of names" class="btn-sm btn-light"
+            [ngClass]="{ 'active' : option === selectedName }" (click)="filterByName(option)">{{
+            option }}</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <label class="small">Hair Color</label>
+      <div ngbDropdown #dropdown="ngbDropdown" container="body">
+        <button class="btn btn-sm btn-light px-3" ngbDropdownToggle>{{
+          selectedHairColor }}</button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem class="btn-sm btn-light" (click)="filterByHairColor()">Please Select</button>
+          <button ngbDropdownItem *ngFor="let option of hairColors" class="btn-sm btn-light"
+            [ngClass]="{ 'active' : option === selectedHairColor }" (click)="filterByHairColor(option)">{{
+            option | hairColor }}</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <label class="small">Gender</label>
+      <div ngbDropdown #dropdown="ngbDropdown" container="body">
+        <button class="btn btn-sm btn-light px-3" ngbDropdownToggle>{{
+          selectedGenderStatus }}</button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem class="btn-sm btn-light" (click)="filterByGender()">Please Select</button>
+          <button ngbDropdownItem *ngFor="let option of genderStatuses" class="btn-sm btn-light"
+            [ngClass]="{ 'active' : option === selectedGenderStatus }" (click)="filterByGender(option)">{{
+            option | genderStatus }}</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <label class="small">Race</label>
+      <div ngbDropdown #dropdown="ngbDropdown" container="body">
+        <button class="btn btn-sm btn-light px-3" ngbDropdownToggle>{{
+          selectedRace }}</button>
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem class="btn-sm btn-light" (click)="filterByRace()">Please Select</button>
+          <button ngbDropdownItem *ngFor="let option of races" class="btn-sm btn-light"
+            [ngClass]="{ 'active' : option === selectedRace }" (click)="filterByRace(option)">{{
+            option | raceStatus }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col">
+      <button type="submit" class="btn btn-primary mr-3" (click)="search()">Search</button>
+      <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>
+    </div>
+  </div>
+
+  <div class="result-container mt-4">
+    <h3>Results</h3>
+    <div *ngIf="busy; else characterList">
+      Loading...
+    </div>
+    <ng-template #characterList>
+      <div class="card-container">
+        <div *ngFor="let character of characters" class="card">
+          <div>Name: {{ character.name }}</div>
+          <div>Gender: {{ character.gender }}</div>
+          <div *ngIf="character.race">Race: {{ character.race }}</div>
+          <div *ngIf="character.hair">Hair: {{ character.hair }}</div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+
+  <nav class="mt-4" *ngIf="!busy" aria-label="navigation">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#" (click)="previous($event)">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#" (click)="next($event)">Next</a></li>
+    </ul>
+  </nav>
+
+</div>
