@@ -4,7 +4,7 @@ import { Gender } from 'src/app/core/enum/gender.enum';
 import { HairColor } from 'src/app/core/enum/hair-color.enum';
 import { Race } from 'src/app/core/enum/race.enum';
 import { Character } from 'src/app/core/model/character';
-import { CharacterService } from './character.service';
+import { CharacterService } from 'src/app/core/service/character.service';
 
 @Component({
   selector: 'app-character-search',

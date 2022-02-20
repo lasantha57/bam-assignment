@@ -9,6 +9,7 @@ import { FeaturesModule } from './feature/feature.module';
 import { SharedModule } from './shared/shared-module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseInterceptor } from './core/interceptor/base.interceptor';
+import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,12 @@ import { BaseInterceptor } from './core/interceptor/base.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: BaseInterceptor,
       multi: true
-  },
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
