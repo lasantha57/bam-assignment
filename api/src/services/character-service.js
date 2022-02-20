@@ -1,5 +1,5 @@
 const { AppError } = require('../utils/error-handler');
-const { BASE_URI } = require('../config/config');
+const { BASE_URI, ONE_API_KEY } = require('../config/config');
 const fetch = require('node-fetch');
 
 class CharacterService {
@@ -16,7 +16,7 @@ class CharacterService {
         }
 
         try {
-            const apiResponse = await fetch(url, { headers: { 'Authorization': 'Bearer ZhYtzsxQGxgdabJAodjX' } })
+            const apiResponse = await fetch(url, { headers: { 'Authorization': `Bearer ${ONE_API_KEY}` } })
             const apiResponseJson = await apiResponse.json()
             return apiResponseJson.docs;
         } catch (error) {
@@ -26,7 +26,7 @@ class CharacterService {
 
     async getById(id) {
         try {
-            const apiResponse = await fetch(`${BASE_URI}/character/${id}`, { headers: { 'Authorization': 'Bearer ZhYtzsxQGxgdabJAodjX' } })
+            const apiResponse = await fetch(`${BASE_URI}/character/${id}`, { headers: { 'Authorization': `Bearer ${ONE_API_KEY}` } })
             const apiResponseJson = await apiResponse.json()
             return apiResponseJson.docs;
         } catch (error) {
