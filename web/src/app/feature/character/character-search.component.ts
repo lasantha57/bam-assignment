@@ -111,7 +111,7 @@ export class CharacterSearchComponent implements OnInit, OnDestroy {
 
   previous($event: any) {
     $event.preventDefault();
-    if (this.currentPageIndex < 1) {
+    if (this.currentPageIndex > 1) {
       this.currentPageIndex = this.currentPageIndex - 1;
       this.search();
     }
