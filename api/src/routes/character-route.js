@@ -7,8 +7,8 @@ const Permissions = require('../middleware/permissions');
 const HasPermissions = require('../middleware/has-permission');
 const UserController = require('../controllers/user-controller');
 
-router.get('/', [UserController.authorized.bind(UserController), HasPermissions(Permissions.View_Characters)], catchErrors(CharacterController.search.bind(CharacterController)));
+router.get('/', [UserController.authorized, HasPermissions(Permissions.View_Characters)], catchErrors(CharacterController.search));
 
-router.get('/', [UserController.authorized.bind(UserController), HasPermissions(Permissions.View_Characters)], catchErrors(CharacterController.getById.bind(CharacterController)));
+router.get('/', [UserController.authorized, HasPermissions(Permissions.View_Characters)], catchErrors(CharacterController.getById));
 
 module.exports = router;
